@@ -1,10 +1,11 @@
-import{i as a}from"./assets/vendor-32231325.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const n of e)if(n.type==="childList")for(const i of n.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function r(e){const n={};return e.integrity&&(n.integrity=e.integrity),e.referrerpolicy&&(n.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?n.credentials="include":e.crossorigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function s(e){if(e.ep)return;e.ep=!0;const n=r(e);fetch(e.href,n)}})();const c={form:document.querySelector("#form"),input:document.querySelector(".input"),container:document.querySelector(".container")};c.form.addEventListener("submit",t=>{t.preventDefault();const o=t.currentTarget,r=o.elements.query.value;p(r).then(h).catch(m).finally(()=>o.reset())});const l="42114323-50c2b50fedad4076dc7ba42b5",u="https://pixabay.com/api/";function f(t){return`${u}?key=${l}&image_type=photo&orientation=horizontal&safesearch=true&q=${t}`}function p(t){const o=f(t);return fetch(o).then(r=>{if(!r.ok)throw new Error(r.statusText);return r.json()}).then(({hits:r})=>r)}function m(){a.error({title:"Sorry, something went wrong."})}function d(){a.error({title:"Sorry, there are no images matching your search query. Please try again!"})}function h(t){if(t.length===0)return d();y(t)}function y(t){const o=t.map(r=>g(r)).join(" ");c.container.innerHTML(o)}function g({webformatURL:t,largeImageURL:o,tags:r,likes:s,views:e,comments:n,downloads:i}){return`
+import{S as c,i as l}from"./assets/vendor-46aac873.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerpolicy&&(o.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?o.credentials="include":e.crossorigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(e){if(e.ep)return;e.ep=!0;const o=n(e);fetch(e.href,o)}})();const s={form:document.querySelector("#form"),input:document.querySelector(".input"),container:document.querySelector(".container"),loading:document.querySelector(".loading")},u=new c(".container a",{});s.form.addEventListener("submit",t=>{t.preventDefault();const r=t.currentTarget,n=r.elements.query.value;n.trim()&&(s.loading.style.display="block",m(n).then(g).catch(h).finally(()=>{r.reset(),s.loading.style.display="none"}))});const f="42114323-50c2b50fedad4076dc7ba42b5",d="https://pixabay.com/api/";function p(t){return`${d}?key=${f}&image_type=photo&orientation=horizontal&safesearch=true&q=${t}`}function m(t){const r=p(t);return fetch(r).then(n=>{if(!n.ok)throw new Error(n.statusText);return n.json()}).then(({hits:n})=>n)}function h(){l.error({title:"Sorry, something went wrong."})}function y(){l.error({title:"Sorry, there are no images matching your search query. Please try again!"})}function g(t){if(t.length===0)return s.container.innerHTML="",y();b(t),u.refresh()}function b(t){const r=t.map(n=>L(n)).join(" ");console.log(r),s.container.innerHTML=r}function L({webformatURL:t,largeImageURL:r,tags:n,likes:a,views:e,comments:o,downloads:i}){return`
+    <a href="${r}">
     <div>
-    <img src="${t}" alt="${r}">
+    <img src="${t}" alt="${n}">
 <ul>
 <li>
 <span>Likes</span><br>
-<span>${s}</span>
+<span>${a}</span>
 </li>
 <li>
 <span>Views</span><br>
@@ -12,7 +13,7 @@ import{i as a}from"./assets/vendor-32231325.js";(function(){const o=document.cre
 </li>
 <li>
 <span>Comments</span><br>
-<span>${n}</span>
+<span>${o}</span>
 </li>
 <li>
 <span>Downloads</span><br>
@@ -20,5 +21,6 @@ import{i as a}from"./assets/vendor-32231325.js";(function(){const o=document.cre
 </li>
 </ul>
     </div>
+    </a>
     `}
 //# sourceMappingURL=commonHelpers.js.map
